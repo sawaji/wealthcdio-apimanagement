@@ -37,7 +37,7 @@ public class Account {
     public void credit(BigDecimal amount)
     {
         if (amount.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("Amount must be non-negative");
+            throw new IllegalArgumentException("Amount must be greater than or equal to one");
         }
         this.balance = this.balance.add(amount);
     }
@@ -45,10 +45,10 @@ public class Account {
     public void debit(BigDecimal amount)
     {
         if (amount.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("Amount must be non-negative");
+            throw new IllegalArgumentException("Amount must be greater than or equal to one");
         }
         if (this.balance.compareTo(amount) < 0) {
-            throw new IllegalArgumentException("Insufficient balance");
+            throw new IllegalArgumentException("Funds Not available");
         }
         this.balance = this.balance.subtract(amount);
     }
